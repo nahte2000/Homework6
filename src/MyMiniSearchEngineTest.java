@@ -22,9 +22,7 @@ public class MyMiniSearchEngineTest {
     public void testOneWord() {
         MyMiniSearchEngine engine = new MyMiniSearchEngine(documents());
         List<Integer> result = engine.search("seattle");
-
         assertEquals(1, result.size());
-
         assertEquals(Integer.valueOf(4), result.get(0));
     }
 
@@ -36,6 +34,7 @@ public class MyMiniSearchEngineTest {
         assertEquals(2, result.size());
 
         assertEquals(List.of(0, 5), result);
+
     }
 
     @Test
@@ -56,13 +55,33 @@ public class MyMiniSearchEngineTest {
 
     @Test
     public void testFourWord() {
-        // homework
-        assertTrue(false); // place holder
+        MyMiniSearchEngine engine = new MyMiniSearchEngine(documents());
+
+        String[] inputs = {
+                "sunday hello world fun",
+                "sunday hello world fun",
+        };
+
+        for (String input : inputs) {
+            List<Integer> result = engine.search(input);
+            assertEquals(1, result.size());
+            assertEquals(List.of(5), result);
+        }
     }
 
     @Test
     public void testWordNotFound() {
-        // homework
-        assertTrue(false); // place holder
+        MyMiniSearchEngine engine = new MyMiniSearchEngine(documents());
+
+        String[] inputs = {
+                "seattle rains hello abc world",
+                "seattle rains hello abc world",
+        };
+
+        for (String input : inputs) {
+            List<Integer> result = engine.search(input);
+            assertEquals(1, result.size());
+            assertEquals(List.of(4), result);
+        }
     }
 }
